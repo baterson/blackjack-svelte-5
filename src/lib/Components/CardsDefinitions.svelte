@@ -5,3 +5,9 @@
 <defs>
 	{@html cardsSVG}
 </defs>
+
+<style>
+	defs {
+		display: none;
+	}
+</style>
