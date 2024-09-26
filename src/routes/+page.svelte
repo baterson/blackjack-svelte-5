@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { Game } from '$lib/gameStore.svelte';
-	import Card from '$lib/components/Card.svelte';
+	import Card from '$lib/Components/Card.svelte';
 	import CardsDefinitions from '$lib/Components/CardsDefinitions.svelte';
 
 	const game = new Game();
 </script>
 
 <CardsDefinitions />
+
+<div id="deck">
+	<Card name="back" />
+</div>
 
 <section>
 	<button onclick={() => game.start()}>Start</button>
@@ -24,13 +28,13 @@
 	</div>
 
 	<div class="wrapper">
-		<div class="container">
+		<div class="container" id="dealer">
 			{#each game.dealer.hand as card}
 				<Card name={card.displayName} />
 			{/each}
 		</div>
 
-		<div class="container">
+		<div class="container" id="player">
 			{#each game.player.hand as card}
 				<Card name={card.displayName} />
 			{/each}
