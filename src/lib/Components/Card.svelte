@@ -12,6 +12,10 @@
 		const dx = start.left - end.left;
 		const dy = start.top - end.top;
 
+		console.log('start', start);
+		console.log('dx', dx);
+		console.log('dy', dy);
+
 		return {
 			delay,
 			duration,

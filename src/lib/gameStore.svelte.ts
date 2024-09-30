@@ -76,7 +76,7 @@ export class Game {
 			this.winner = 'dealer';
 		}
 	};
-	π;
+
 	calculateWinner = () => {
 		if (this.dealer.score > 21) {
 			this.winner = 'player';
