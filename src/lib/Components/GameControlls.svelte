@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { Turn, Winner } from '$lib/gameStore.svelte';
 	import Button from './Button.svelte';
 
 	const {
@@ -10,16 +11,16 @@
 		start,
 		restart
 	}: {
-		winner: string | null;
+		winner: Winner;
 		inGame: boolean;
-		turn: string | null;
+		turn: Turn;
 		draw: () => void;
 		stop: () => void;
 		start: () => void;
 		restart: () => void;
 	} = $props();
 
-	const winnerText = $derived(winner === 'draw' ? 'Draw' : `${winner} won!`);
+	const winnerText = $derived(winner === 'Draw' ? 'Draw' : `${winner} won!`);
 </script>
 
 <div>

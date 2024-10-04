@@ -47,11 +47,11 @@ export class Dealer {
 }
 
 export class Game {
-	winner = $state<null | 'Player' | 'Dealer' | 'Draw'>(null);
+	winner = $state<Winner>(null);
 	player = $state(new Player());
 	dealer = $state(new Dealer());
 	deck = $state(new Deck());
-	turn = $state<null | 'Player' | 'Dealer'>(null);
+	turn = $state<Turn>(null);
 	inGame = $derived(this.turn !== null);
 	drawSound: HTMLAudioElement | null = null;
 
@@ -134,3 +134,6 @@ export class Game {
 		}
 	};
 }
+
+export type Winner = null | 'Player' | 'Dealer' | 'Draw';
+export type Turn = null | 'Player' | 'Dealer';
