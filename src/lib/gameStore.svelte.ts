@@ -1,5 +1,6 @@
-import { buildDeck, calculateScore } from '$lib/utils';
+import { buildDeck, calculateScore, wait } from '$lib/utils';
 import type { Card } from '$lib/utils';
+import { tick } from 'svelte';
 
 export class Deck {
 	cards = $state(buildDeck());
@@ -30,6 +31,8 @@ export class Player {
 
 	draw = (card: Card) => {
 		if (this.canDraw) {
+			console.log('this.hand', this.hand);
+
 			this.hand.push(card);
 		}
 	};
@@ -46,17 +49,24 @@ export class Dealer {
 }
 
 export class Game {
-	winner = $state<null | 'player' | 'dealer' | 'draw'>(null);
+	winner = $state<null | 'Player' | 'Dealer' | 'Draw'>(null);
 	player = $state(new Player());
 	dealer = $state(new Dealer());
 	deck = $state(new Deck());
-	inGame = $derived(this.player.hand.length);
+	turn = $state<null | 'Player' | 'Dealer'>(null);
+	inGame = $derived(this.turn !== null);
 
-	start = () => {
+	start = async (restart = false) => {
+		this.deck = new Deck();
 		this.player = new Player();
 		this.dealer = new Dealer();
-		this.deck = new Deck();
 		this.winner = null;
+		this.turn = 'Player';
+
+		if (restart) {
+			// Wait one tick to trigger the animation on restart
+			await tick();
+		}
 
 		this.dealer.draw(this.deck.deal());
 		this.player.draw(this.deck.deal());
@@ -67,25 +77,25 @@ export class Game {
 
 	checkBlackjack = () => {
 		if (this.player.score === 21) {
-			this.winner = 'player';
+			this.winner = 'Player';
 		}
 	};
 
 	checkBust = () => {
 		if (this.player.score > 21) {
-			this.winner = 'dealer';
+			this.winner = 'Dealer';
 		}
 	};
 
 	calculateWinner = () => {
 		if (this.dealer.score > 21) {
-			this.winner = 'player';
+			this.winner = 'Player';
 		} else if (this.player.score > this.dealer.score) {
-			this.winner = 'player';
+			this.winner = 'Player';
 		} else if (this.player.score < this.dealer.score) {
-			this.winner = 'dealer';
+			this.winner = 'Dealer';
 		} else {
-			this.winner = 'draw';
+			this.winner = 'Draw';
 		}
 	};
 
@@ -98,10 +108,16 @@ export class Game {
 		}
 	};
 
-	dealerTurn = () => {
+	dealerTurn = async () => {
+		this.turn = 'Dealer';
+
 		while (this.dealer.shouldDraw) {
 			this.dealer.draw(this.deck.deal());
+
+			// Wait to animate card dealing one by one
+			await wait(500);
 		}
+
 		this.calculateWinner();
 	};
 }

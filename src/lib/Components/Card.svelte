@@ -1,38 +1,15 @@
 <script lang="ts">
-	import { cubicOut } from 'svelte/easing';
+	import { flyAndFlip } from '$lib/animation';
 
-	export let name: string;
-
-	function flyAndFlip(node, { delay = 0, duration = 1000, easing = cubicOut } = {}) {
-		const start = document.querySelector('#deck')?.getBoundingClientRect();
-		const end = node.getBoundingClientRect();
-
-		if (!start) return {};
-
-		const dx = start.left - end.left;
-		const dy = start.top - end.top;
-
-		console.log('start', start);
-		console.log('dx', dx);
-		console.log('dy', dy);
-
-		return {
-			delay,
-			duration,
-			easing,
-			css: (t) => `
-          transform: translate(${dx * (1 - t)}px, ${dy * (1 - t)}px) rotateY(${180 - t * 180}deg);
-        `
-		};
-	}
+	const { name }: { name: string } = $props();
 </script>
 
 <div class="card" in:flyAndFlip>
-	<svg class="card__face back">
+	<svg class="back">
 		<use href="#back" />
 	</svg>
 
-	<svg class="card__face front">
+	<svg class="front">
 		<use href={`#${name}`} />
 	</svg>
 </div>
@@ -44,9 +21,10 @@
 		height: 250px;
 		transform-style: preserve-3d;
 		perspective: 1000px;
+		z-index: 20;
 	}
 
-	.card__face {
+	svg {
 		position: absolute;
 		width: 100%;
 		height: 100%;
