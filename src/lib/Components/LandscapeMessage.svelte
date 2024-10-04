@@ -1,44 +1,31 @@
-<div class="modal">
-	<div class="modal-content">
-		<h2>Use Landscape</h2>
-	</div>
-</div>
+<script>
+	import Landscape from '$lib/assets/landscape.svg?raw';
+</script>
+
+<section>
+	{@html Landscape}
+	<p>Please use landscape mode</p>
+</section>
 
 <style>
-	.modal {
+	section {
 		display: none;
 	}
 
 	/* Основные стили модального окна */
 	@media (max-width: 968px) and (orientation: portrait) {
-		.modal {
+		section {
 			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			background-color: rgba(0, 0, 0, 0.8);
+			width: 100dvw;
+			height: 100dvh;
+			background-color: rgba(0, 0, 0, 0.9);
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			z-index: 1000;
-		}
-
-		.modal-content {
-			background-color: #fff;
-			padding: 20px;
-			border-radius: 10px;
-			text-align: center;
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		}
-
-		h2 {
-			color: #004d00;
-			margin-bottom: 10px;
-		}
-
-		p {
-			color: #333;
+			z-index: 100;
+			color: #e8eaed;
+			font-size: 28px;
 		}
 	}
 </style>

@@ -21,7 +21,7 @@
 		height: 250px;
 		transform-style: preserve-3d;
 		perspective: 1000px;
-		z-index: 20;
+		z-index: 10;
 	}
 
 	svg {
