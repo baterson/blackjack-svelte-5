@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { Card as CardType } from '$lib/utils';
+	import Card from './Card.svelte';
 
 	const { hand, score }: { hand: CardType[]; score: number } = $props();
-
-	import Card from './Card.svelte';
 </script>
 
 <div class="wrapper">
