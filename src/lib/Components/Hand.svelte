@@ -39,4 +39,11 @@
 		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 		border-radius: 12px;
 	}
+
+	@media (max-width: 968px) and (orientation: landscape) {
+		.wrapper {
+			padding: 6px 14px;
+			gap: 10px;
+		}
+	}
 </style>

@@ -2,6 +2,7 @@
 	import './global.css';
 	import audioPath from '$lib/assets/draw.mp3';
 	import { Game } from '$lib/gameStore.svelte';
+	import LandscapeMessage from '$lib/Components/LandscapeMessage.svelte';
 	import GameControlls from '$lib/Components/GameControlls.svelte';
 	import CardsDefinitions from '$lib/Components/CardsDefinitions.svelte';
 	import Deck from '$lib/Components/Deck.svelte';
@@ -16,6 +17,7 @@
 	});
 </script>
 
+<LandscapeMessage />
 <CardsDefinitions />
 
 <section>
@@ -40,8 +42,8 @@
 <style>
 	section {
 		display: flex;
-		height: 100vh;
-		width: 100vw;
+		height: 100dvh;
+		width: 100dvw;
 		background: radial-gradient(circle at center, #007f0e, #004d00 50%, #001a00);
 	}
 
@@ -50,7 +52,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 20px;
+		padding: 8px;
 		gap: 20px;
 	}
 </style>

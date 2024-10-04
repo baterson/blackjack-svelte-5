@@ -38,4 +38,20 @@
 		backface-visibility: hidden;
 		z-index: 2;
 	}
+
+	@media (max-width: 968px) and (orientation: landscape) {
+		.card {
+			width: 70px;
+			height: 100px;
+		}
+
+		svg {
+			width: 100%;
+			height: 100%;
+		}
+
+		use {
+			transform: scale(0.4);
+		}
+	}
 </style>

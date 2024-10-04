@@ -76,4 +76,12 @@
 	.stop:hover {
 		background-color: #793737;
 	}
+
+	@media (max-width: 968px) and (orientation: landscape) {
+		button {
+			padding: 10px 20px;
+			font-size: 14px;
+			border-radius: 6px;
+		}
+	}
 </style>
