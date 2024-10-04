@@ -31,8 +31,6 @@ export class Player {
 
 	draw = (card: Card) => {
 		if (this.canDraw) {
-			console.log('this.hand', this.hand);
-
 			this.hand.push(card);
 		}
 	};
@@ -55,6 +53,7 @@ export class Game {
 	deck = $state(new Deck());
 	turn = $state<null | 'Player' | 'Dealer'>(null);
 	inGame = $derived(this.turn !== null);
+	drawSound: HTMLAudioElement | null = null;
 
 	start = async (restart = false) => {
 		this.deck = new Deck();
@@ -68,6 +67,7 @@ export class Game {
 			await tick();
 		}
 
+		this?.drawSound?.play();
 		this.dealer.draw(this.deck.deal());
 		this.player.draw(this.deck.deal());
 		this.player.draw(this.deck.deal());
@@ -101,6 +101,7 @@ export class Game {
 
 	playerTurn = (option: 'draw' | 'stop') => {
 		if (option === 'draw') {
+			this.playDrawSound();
 			this.player.draw(this.deck.deal());
 			this.checkBust();
 		} else {
@@ -112,6 +113,7 @@ export class Game {
 		this.turn = 'Dealer';
 
 		while (this.dealer.shouldDraw) {
+			this.playDrawSound();
 			this.dealer.draw(this.deck.deal());
 
 			// Wait to animate card dealing one by one
@@ -119,5 +121,16 @@ export class Game {
 		}
 
 		this.calculateWinner();
+	};
+
+	setAudio(audio: HTMLAudioElement) {
+		this.drawSound = audio;
+	}
+
+	playDrawSound = () => {
+		if (this.drawSound) {
+			this.drawSound.currentTime = 0;
+			this.drawSound.play();
+		}
 	};
 }

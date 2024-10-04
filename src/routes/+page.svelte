@@ -1,12 +1,19 @@
 <script lang="ts">
 	import './global.css';
+	import audioPath from '$lib/assets/draw.mp3';
 	import { Game } from '$lib/gameStore.svelte';
 	import GameControlls from '$lib/Components/GameControlls.svelte';
 	import CardsDefinitions from '$lib/Components/CardsDefinitions.svelte';
 	import Deck from '$lib/Components/Deck.svelte';
 	import Hand from '$lib/Components/Hand.svelte';
+	import { onMount } from 'svelte';
 
 	const game = new Game();
+
+	onMount(() => {
+		// Setting audio in onMount since Audio is not present on the server
+		game.setAudio(new Audio(audioPath));
+	});
 </script>
 
 <CardsDefinitions />
