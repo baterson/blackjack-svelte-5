@@ -39,7 +39,3 @@ export const calculateScore = (cards: Card[]): number => {
 	}
 	return score;
 };
-
-export const wait = async (ms: number) => {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-};

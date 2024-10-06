@@ -41,8 +41,8 @@
 
 	@media (max-width: 968px) and (orientation: landscape) {
 		.card {
-			width: 70px;
-			height: 100px;
+			width: 50px;
+			height: 80px;
 		}
 
 		svg {
@@ -51,7 +51,7 @@
 		}
 
 		use {
-			transform: scale(0.4);
+			transform: scale(0.3);
 		}
 	}
 </style>

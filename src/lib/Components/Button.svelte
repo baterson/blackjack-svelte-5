@@ -52,7 +52,7 @@
 
 	.deal {
 		background-color: #2c5846;
-		color: #c1d8cc;
+		color: white;
 	}
 
 	.deal:hover {
@@ -61,7 +61,7 @@
 
 	.draw {
 		background-color: #253b61;
-		color: #ccd1e6;
+		color: white;
 	}
 
 	.draw:hover {
@@ -70,7 +70,7 @@
 
 	.stop {
 		background-color: #5b2a2a;
-		color: #e6c6c6;
+		color: white;
 	}
 
 	.stop:hover {

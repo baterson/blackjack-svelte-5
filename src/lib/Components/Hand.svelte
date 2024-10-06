@@ -25,7 +25,7 @@
 		align-items: center;
 		font-size: 28px;
 		font-weight: bold;
-		color: #c1d8cc;
+		color: goldenrod;
 	}
 
 	.wrapper {
@@ -42,7 +42,7 @@
 
 	@media (max-width: 968px) and (orientation: landscape) {
 		.wrapper {
-			padding: 6px 14px;
+			padding: 4px 8px;
 			gap: 10px;
 		}
 	}

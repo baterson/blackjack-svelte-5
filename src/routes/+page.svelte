@@ -52,7 +52,13 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 8px;
+		padding: 48px;
 		gap: 20px;
+	}
+
+	@media (max-width: 968px) and (orientation: landscape) {
+		div {
+			padding: 8px;
+		}
 	}
 </style>

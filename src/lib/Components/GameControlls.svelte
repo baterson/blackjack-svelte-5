@@ -26,8 +26,7 @@
 <div>
 	{#if winner}
 		<Button variant="deal" onclick={restart}>
-			{winnerText}
-			Start again
+			<span>{winnerText}</span> Start again
 		</Button>
 	{:else if inGame}
 		<Button variant="draw" disabled={turn === 'Dealer'} onclick={draw}>Draw</Button>
@@ -44,5 +43,12 @@
 		align-items: center;
 		gap: 20px;
 		height: 36px;
+	}
+
+	span {
+		color: goldenrod;
+		padding-right: 6px;
+		margin-right: 3px;
+		border-right: 2px solid rgba(255, 255, 255, 0.759);
 	}
 </style>

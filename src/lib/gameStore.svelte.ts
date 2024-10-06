@@ -1,4 +1,4 @@
-import { buildDeck, calculateScore, wait } from '$lib/utils';
+import { buildDeck, calculateScore } from '$lib/utils';
 import type { Card } from '$lib/utils';
 import { tick } from 'svelte';
 
@@ -113,11 +113,8 @@ export class Game {
 		this.turn = 'Dealer';
 
 		while (this.dealer.shouldDraw) {
-			this.playDrawSound();
 			this.dealer.draw(this.deck.deal());
-
-			// Wait to animate card dealing one by one
-			await wait(500);
+			await this.playDrawSound();
 		}
 
 		this.calculateWinner();
@@ -128,10 +125,13 @@ export class Game {
 	}
 
 	playDrawSound = () => {
-		if (this.drawSound) {
-			this.drawSound.currentTime = 0;
-			this.drawSound.play();
-		}
+		return new Promise((resolve) => {
+			if (this.drawSound) {
+				this.drawSound.onended = resolve;
+				this.drawSound?.play();
+				return;
+			}
+		});
 	};
 }
 
