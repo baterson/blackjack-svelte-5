@@ -8,7 +8,7 @@ Check out the [BlackJack game live demo](https://blackjack-svelte-5.ivan-sem.com
 
 ## Technologies
 
-- Svelte 5!
+- Svelte 5
 
 - SVG Cards from [SVG-cards](https://github.com/htdebeer/SVG-cards)
 
