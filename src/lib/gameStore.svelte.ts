@@ -67,7 +67,7 @@ export class Game {
 			await tick();
 		}
 
-		this?.drawSound?.play();
+		this.playDrawSound();
 		this.dealer.draw(this.deck.deal());
 		this.player.draw(this.deck.deal());
 		this.player.draw(this.deck.deal());
