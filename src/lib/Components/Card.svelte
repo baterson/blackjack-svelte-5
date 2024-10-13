@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { flyAndFlip } from '$lib/animation';
-
-	const { name }: { name: string } = $props();
+	// todo: define props
 </script>
 
-<div class="card" in:flyAndFlip>
+<!-- todo: add animation on enter -->
+<div class="card">
 	<svg class="back">
 		<use href="#back" />
 	</svg>
@@ -37,21 +36,5 @@
 	.front {
 		backface-visibility: hidden;
 		z-index: 2;
-	}
-
-	@media (max-width: 968px) and (orientation: landscape) {
-		.card {
-			width: 50px;
-			height: 80px;
-		}
-
-		svg {
-			width: 100%;
-			height: 100%;
-		}
-
-		use {
-			transform: scale(0.3);
-		}
 	}
 </style>

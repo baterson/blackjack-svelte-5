@@ -32,6 +32,10 @@ export const buildDeck = (): Card[] => {
 	return deck;
 };
 
+export const shuffle = (cards: Card[]): Card[] => {
+	return cards.sort(() => Math.random() - 0.5);
+};
+
 export const calculateScore = (cards: Card[]): number => {
 	let score = 0;
 	for (const card of cards) {

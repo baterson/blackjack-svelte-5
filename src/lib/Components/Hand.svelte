@@ -1,15 +1,10 @@
 <script lang="ts">
-	import type { Card as CardType } from '$lib/utils';
-	import Card from './Card.svelte';
-
-	const { hand, score }: { hand: CardType[]; score: number } = $props();
+	// todo: define props
 </script>
 
 <div class="wrapper">
-	<div class="score">{score}</div>
-	{#each hand as card}
-		<Card name={card.displayName} />
-	{/each}
+	<!-- <div class="score">{score}</div> -->
+	<!-- todo: render cards -->
 </div>
 
 <style>
@@ -38,12 +33,5 @@
 		border: 2px solid rgba(0, 0, 0, 0.76);
 		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 		border-radius: 12px;
-	}
-
-	@media (max-width: 968px) and (orientation: landscape) {
-		.wrapper {
-			padding: 4px 8px;
-			gap: 10px;
-		}
 	}
 </style>

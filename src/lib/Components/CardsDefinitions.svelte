@@ -1,11 +1,9 @@
 <script lang="ts">
-	import cardsSVG from '../assets/cards.svg?raw';
+	// todo: import cardsSVG file content
 </script>
 
-<!-- renders raw cards svg content for later use in other components -->
-<defs>
-	{@html cardsSVG}
-</defs>
+<!-- todo: render cards -->
+<defs> </defs>
 
 <style>
 	defs {
