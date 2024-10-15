@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Turn, Winner } from '$lib/gameStore.svelte';
+	import type { Turn, Winner } from '$lib/utils';
 	import Button from './Button.svelte';
 
 	const {

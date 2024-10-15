@@ -1,9 +1,17 @@
 <script lang="ts">
-	// todo: define props
+	import type { Snippet } from 'svelte';
+
+	const {
+		disabled,
+		onclick,
+		children,
+		variant
+	}: { disabled?: boolean; onclick: () => void; children: Snippet; variant: string } = $props();
 </script>
 
-<!-- todo: use children -->
-<!-- <button class={variant} {onclick} {disabled}> </button> -->
+<button class={variant} {onclick} {disabled}>
+	{@render children()}
+</button>
 
 <style>
 	button {

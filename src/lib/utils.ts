@@ -22,6 +22,9 @@ export type Card = {
 	displayName: string;
 };
 
+export type Winner = null | 'Player' | 'Dealer' | 'Draw';
+export type Turn = null | 'Player' | 'Dealer';
+
 export const buildDeck = (): Card[] => {
 	const deck = [];
 	for (const suit of SUITES) {
@@ -42,4 +45,16 @@ export const calculateScore = (cards: Card[]): number => {
 		score += SCORES[card.rank];
 	}
 	return score;
+};
+
+export let calculateWinner = (playerScore: number, dealerScore: number) => {
+	if (dealerScore > 21) {
+		return 'Player';
+	} else if (playerScore > dealerScore) {
+		return 'Player';
+	} else if (playerScore < dealerScore) {
+		return 'Dealer';
+	} else {
+		return 'Draw';
+	}
 };
