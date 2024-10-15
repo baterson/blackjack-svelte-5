@@ -1,8 +1,32 @@
 <script lang="ts">
 	import './global.css';
+	import { Game } from '$lib/gameStore.svelte';
+	import GameControlls from '$lib/Components/GameControlls.svelte';
+	import CardsDefinitions from '$lib/Components/CardsDefinitions.svelte';
+	import Deck from '$lib/Components/Deck.svelte';
+	import Hand from '$lib/Components/Hand.svelte';
 </script>
 
-<section></section>
+<!-- <CardsDefinitions /> -->
+
+<!-- <section>
+	<Deck />
+	<div>
+		<Hand hand={game.dealer.hand} score={game.dealer.score} />
+
+		<GameControlls
+			winner={game.winner}
+			inGame={game.inGame}
+			turn={game.turn}
+			draw={() => game.playerTurn('draw')}
+			stop={() => game.playerTurn('stop')}
+			start={() => game.start()}
+			restart={() => game.start(true)}
+		/>
+
+		<Hand hand={game.player.hand} score={game.player.score} />
+	</div>
+</section> -->
 
 <style>
 	section {
