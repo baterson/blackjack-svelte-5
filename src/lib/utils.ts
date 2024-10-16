@@ -47,7 +47,7 @@ export const calculateScore = (cards: Card[]): number => {
 	return score;
 };
 
-export let calculateWinner = (playerScore: number, dealerScore: number) => {
+export const calculateWinner = (playerScore: number, dealerScore: number) => {
 	if (dealerScore > 21) {
 		return 'Player';
 	} else if (playerScore > dealerScore) {
@@ -58,3 +58,10 @@ export let calculateWinner = (playerScore: number, dealerScore: number) => {
 		return 'Draw';
 	}
 };
+
+export const wait = () =>
+	new Promise((res) =>
+		setTimeout(() => {
+			res(null);
+		}, 1000)
+	);
